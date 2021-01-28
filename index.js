@@ -74,7 +74,7 @@ const request = require('request');
 // }
 
 
-module.exports.run = async () => {
+// module.exports.run = async () => {
   GitHubCore.debug('Inside index.js function');
 
   // try {
@@ -130,4 +130,4 @@ module.exports.run = async () => {
   } catch (error) {
     GitHubCore.setFailed(error);
   }
-}
+// }
