@@ -75,7 +75,7 @@ const prefixError = require('./src/prefix-vendor-error-message');
 
 
 async function run () {
-  GitHubCore.debug('Inside index.js function');
+  // GitHubCore.info('Inside index.js function');
 
   // try {
   //   sgMail.setApiKey(process.env.SENDGRID_API_TOKEN);
@@ -86,19 +86,25 @@ async function run () {
   let message = '';
   
   try {
-    GitHubCore.debug('Inside github try');
+    GitHubCore.info('Inside github try');
     const gitHubToken = GitHubCore.getInput('github-token');
-    GitHubCore.info(gitHubToken);
-    // const Octokit = new GitHubClient(gitHubToken);
     const Octokit = github.getOctokit(gitHubToken);
     const { owner, repo } = context.repo;
 
     GitHubCore.info(owner);
     GitHubCore.info(repo);
 
-    message = await getSlackMessage(Octokit, owner, repo);
+    const {
+      url,
+      name,
+      title,
+      description
+    } = await getSlackMessage(Octokit, owner, repo);
 
-    GitHubCore.info(message);
+    GitHubCore.info(url);
+    GitHubCore.info(name);
+    GitHubCore.info(title);
+    GitHubCore.info(description);
 
     GitHubCore.info('Message built');
   } catch (err) {
