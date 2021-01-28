@@ -1,29 +1,33 @@
 'use strict';
 
-const GitHubCore = require('@actions/core');
-
 module.exports = async (Octokit, owner, repo) => {
   const { data: releases } = await Octokit.repos.listReleases({ owner, repo });
 
-  const [latestRelease] = releases;
+  const [ latestRelease ] = releases;
 
-  GitHubCore.info('inside get-lated-pull-request.js');
-  // GitHubCore.info(releases);
-  // GitHubCore.info(releases[0]);
+  const {
+    tag_name: name,
+    name: title,
+    body: description,
+    html_url: url
+  } = latestRelease;
 
+  // GitHubCore.info('inside get-lated-pull-request.js');
 
-  let properties = '';
-  Object.getOwnPropertyNames(releases[0]).forEach((val) => {
-    properties += `,${val}`;
-  });
+  // let properties = '';
+  // Object.getOwnPropertyNames(releases[0]).forEach((val) => {
+  //   properties += `,${val}`;
+  // });
 
-  GitHubCore.info(properties);
   // GitHubCore.info(latestRelease.tag_name); // v0.0.29
   // GitHubCore.info(latestRelease.name); // title 321321
   // GitHubCore.info(latestRelease.body); // description 123 123
-  GitHubCore.info(latestRelease.html_url);
-  GitHubCore.info(latestRelease.tarball_url);
-  GitHubCore.info(latestRelease.zipball_url);
+  // GitHubCore.info(latestRelease.html_url); // https://github.com/PayCertify/release-notify-git-actions/releases/tag/v0.0.29
 
-  return releases[0];
+  return {
+    url,
+    name,
+    title,
+    description
+  }
 };

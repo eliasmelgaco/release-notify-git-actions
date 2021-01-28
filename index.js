@@ -86,7 +86,9 @@ async function run () {
   let message = '';
   
   try {
-    const gitHubToken = GitHubCore.getInput('github-token') || process.env.GITHUB_TOKEN;
+    GitHubCore.debug('Inside github try');
+    const gitHubToken = GitHubCore.getInput('github-token');
+    GitHubCore.info(gitHubToken);
     // const Octokit = new GitHubClient(gitHubToken);
     const Octokit = github.getOctokit(gitHubToken);
     const { owner, repo } = context.repo;
@@ -96,7 +98,7 @@ async function run () {
 
     message = await getSlackMessage(Octokit, owner, repo);
 
-
+    GitHubCore.info(message);
 
     GitHubCore.info('Message built');
   } catch (err) {
@@ -106,9 +108,9 @@ async function run () {
   }
 
   // try {
-  //   const slackToken = GitHubCore.getInput('slackbot-token') || process.env.SLACK_TOKEN;
+  //   const slackToken = GitHubCore.getInput('slackbot-token') ;
   //   const Slack = new SlackWebClient(slackToken);
-  //   const slackConversationId = GitHubCore.getInput('slack-conversation-id') || process.env.SLACK_CONVERSATION_ID;
+  //   const slackConversationId = GitHubCore.getInput('slack-conversation-id');
   //   await postMessage(Slack, slackConversationId, message);
 
   //   GitHubCore.info('Slack message posted');
@@ -117,7 +119,7 @@ async function run () {
   // }
 
   // try {
-  //   const recipients = GitHubCore.getInput('email-recipients') || process.env.RECIPIENTS;
+  //   const recipients = GitHubCore.getInput('email-recipients');
 
   //   // eslint-disable-next-line no-unused-vars
   //   request.get(recipients, async (error, response, body) => {
