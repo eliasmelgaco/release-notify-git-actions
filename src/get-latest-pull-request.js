@@ -18,10 +18,12 @@ module.exports = async (Octokit, owner, repo) => {
   });
 
   GitHubCore.info(properties);
-  GitHubCore.info(latestRelease.tag_name);
-  GitHubCore.info(latestRelease.name);
-  GitHubCore.info(latestRelease.body);
-  GitHubCore.info(latestRelease.url);
+  // GitHubCore.info(latestRelease.tag_name); // v0.0.29
+  // GitHubCore.info(latestRelease.name); // title 321321
+  // GitHubCore.info(latestRelease.body); // description 123 123
+  GitHubCore.info(latestRelease.html_url);
+  GitHubCore.info(latestRelease.tarball_url);
+  GitHubCore.info(latestRelease.zipball_url);
 
   return releases[0];
 };
