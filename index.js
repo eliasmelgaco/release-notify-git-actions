@@ -75,7 +75,8 @@ const request = require('request');
 
 
 module.exports.run = async () => {
-  console.log('this is a test');
+  GitHubCore.debug('Inside index.js function');
+
   // try {
   //   sgMail.setApiKey(process.env.SENDGRID_API_TOKEN);
   // } catch (err) {

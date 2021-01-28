@@ -14,8 +14,12 @@ jobs:
 
       - name: Release Notify Git Actions
         uses: ./
+        id: releaseStep
         with:
           github-token: '7dd6a3cb737053d1f74c30082070a9509d357bdc'
           slackbot-token: 'x'
           slack-conversation-id: 'elias@paycertify.com'
+      
+      - name: Get the output time
+        run: echo "The time was ${{ steps.releaseStep.outputs.time }}"
       

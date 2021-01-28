@@ -2,9 +2,9 @@
   "name": "release-notify-git-actions",
   "version": "1.0.0",
   "description": "GitHub Action that triggers e-mails with release notes when these are created",
-  "main": "notify.js",
+  "main": "index.js",
   "scripts": {
-    "lint": "eslint notify.js src/*",
+    "lint": "eslint index.js src/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
