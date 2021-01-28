@@ -1,0 +1,19 @@
+{
+  "name": "release-notify-git-actions",
+  "version": "1.0.0",
+  "description": "GitHub Action that triggers e-mails with release notes when these are created",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PayCertify/release-notify-git-actions.git"
+  },
+  "author": "eliasmelgaco@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PayCertify/release-notify-git-actions/issues"
+  },
+  "homepage": "https://github.com/PayCertify/release-notify-git-actions#readme"
+}
