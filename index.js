@@ -91,9 +91,10 @@ async function run () {
     const Octokit = github.getOctokit(gitHubToken);
     const { owner, repo } = context.repo;
 
+    GitHubCore.info({ owner, repo });
+
     message = await getSlackMessage(Octokit, owner, repo);
 
-    GitHubCore.info(message);
 
 
     GitHubCore.info('Message built');
