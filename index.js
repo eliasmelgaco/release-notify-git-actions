@@ -93,7 +93,7 @@ async function run () {
 
     message = await getSlackMessage(Octokit, owner, repo);
 
-    GitHubCore.debug(message);
+    GitHubCore.info(message);
 
 
     GitHubCore.info('Message built');
