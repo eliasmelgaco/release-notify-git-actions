@@ -11,7 +11,7 @@ const {
   WebClient: SlackWebClient
 } = require('@slack/web-api');
 
-const sgMail = require('@sendgrid/mail');
+// const sgMail = require('@sendgrid/mail');
 
 const getSlackMessage = require('./src/get-slack-message');
 const postMessage = require('./src/post-message');
@@ -56,30 +56,30 @@ const request = require('request');
 //   };
 // }
 
-const sendEmails = async (msg) => {
-  return sgMail
-    .send(msg)
-    .then(() => {
-      console.log("Mail sent!")
-    })
-    .catch(error => {
-      console.error(error.toString())
+// const sendEmails = async (msg) => {
+//   return sgMail
+//     .send(msg)
+//     .then(() => {
+//       console.log("Mail sent!")
+//     })
+//     .catch(error => {
+//       console.error(error.toString())
 
-      // //Extract error msg
-      // const { message, code, response } = error
+//       // //Extract error msg
+//       // const { message, code, response } = error
 
-      // //Extract response msg
-      // const { headers, body } = response
-    });
-}
+//       // //Extract response msg
+//       // const { headers, body } = response
+//     });
+// }
 
 
 module.exports.run = async () => {
-  try {
-    sgMail.setApiKey(process.env.SENDGRID_API_TOKEN);
-  } catch (err) {
-    GitHubCore.setFailed(`Failed when try to set SendGrid API, error: ${err}`);
-  }
+  // try {
+  //   sgMail.setApiKey(process.env.SENDGRID_API_TOKEN);
+  // } catch (err) {
+  //   GitHubCore.setFailed(`Failed when try to set SendGrid API, error: ${err}`);
+  // }
 
   let message = '';
   
@@ -121,7 +121,8 @@ module.exports.run = async () => {
       }
 
       // return sendEmails(prepareMessage(body.split(/\r\n|\n|\r/)));
-      return sendEmails('test');
+      // return sendEmails('test');
+      GitHubCore.info('testttt');
     });
   } catch (error) {
     GitHubCore.setFailed(error);
