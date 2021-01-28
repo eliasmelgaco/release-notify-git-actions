@@ -20,6 +20,3 @@ jobs:
           slackbot-token: 'x'
           slack-conversation-id: 'elias@paycertify.com'
       
-      - name: Get the output time
-        run: echo "The time was ${{ steps.releaseStep.outputs.time }}"
-      

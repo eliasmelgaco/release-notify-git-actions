@@ -91,7 +91,6 @@ async function run () {
     const Octokit = github.getOctokit(gitHubToken);
     const { owner, repo } = context.repo;
 
-    GitHubCore.info(owner, repo);
     GitHubCore.info(owner);
     GitHubCore.info(repo);
 
