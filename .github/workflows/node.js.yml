@@ -13,7 +13,7 @@ jobs:
         run: npm i
 
       - name: Release Notify Git Actions
-        uses: PayCertify/release-notify-git-actions
+        uses: ./
         with:
           github-token: '7dd6a3cb737053d1f74c30082070a9509d357bdc'
           slackbot-token: 'x'
