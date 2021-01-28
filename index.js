@@ -19,7 +19,7 @@ const prefixError = require('./src/prefix-vendor-error-message');
 
 // const showdown  = require('showdown');
 // const fs = require('fs');
-const request = require('request');
+// const request = require('request');
 
 // const prepareMessage = (recipients) => {
 //   const converter = new showdown.Converter();
@@ -93,6 +93,8 @@ async function run () {
 
     message = await getSlackMessage(Octokit, owner, repo);
 
+    GitHubCore.debug(message);
+
 
     GitHubCore.info('Message built');
   } catch (err) {
@@ -101,35 +103,35 @@ async function run () {
     return;
   }
 
-  try {
-    const slackToken = GitHubCore.getInput('slackbot-token') || process.env.SLACK_TOKEN;
-    const Slack = new SlackWebClient(slackToken);
-    const slackConversationId = GitHubCore.getInput('slack-conversation-id') || process.env.SLACK_CONVERSATION_ID;
-    await postMessage(Slack, slackConversationId, message);
+  // try {
+  //   const slackToken = GitHubCore.getInput('slackbot-token') || process.env.SLACK_TOKEN;
+  //   const Slack = new SlackWebClient(slackToken);
+  //   const slackConversationId = GitHubCore.getInput('slack-conversation-id') || process.env.SLACK_CONVERSATION_ID;
+  //   await postMessage(Slack, slackConversationId, message);
 
-    GitHubCore.info('Slack message posted');
-  } catch (error) {
-    GitHubCore.setFailed(prefixError(error, 'Slack'));
-  }
+  //   GitHubCore.info('Slack message posted');
+  // } catch (error) {
+  //   GitHubCore.setFailed(prefixError(error, 'Slack'));
+  // }
 
-  try {
-    const recipients = GitHubCore.getInput('email-recipients') || process.env.RECIPIENTS;
+  // try {
+  //   const recipients = GitHubCore.getInput('email-recipients') || process.env.RECIPIENTS;
 
-    // eslint-disable-next-line no-unused-vars
-    request.get(recipients, async (error, response, body) => {
-      if (error) {
-        console.error(error);
+  //   // eslint-disable-next-line no-unused-vars
+  //   request.get(recipients, async (error, response, body) => {
+  //     if (error) {
+  //       console.error(error);
 
-        process.exit(1);
-      }
+  //       process.exit(1);
+  //     }
 
-      // return sendEmails(prepareMessage(body.split(/\r\n|\n|\r/)));
-      // return sendEmails('test');
-      GitHubCore.info('testttt');
-    });
-  } catch (error) {
-    GitHubCore.setFailed(error);
-  }
+  //     // return sendEmails(prepareMessage(body.split(/\r\n|\n|\r/)));
+  //     // return sendEmails('test');
+  //     GitHubCore.info('testttt');
+  //   });
+  // } catch (error) {
+  //   GitHubCore.setFailed(error);
+  // }
 }
 
 run();
