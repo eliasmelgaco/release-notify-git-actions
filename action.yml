@@ -1,0 +1,21 @@
+name: 'Notify Latest Release'
+description: 'Notify Latest Release | Paycertify'
+inputs:
+  github-token:
+    description: 'GitHub Token'
+    required: true
+  slackbot-token:
+    description: 'SlackBot Token'
+    required: true
+  slack-conversation-id:
+    description: 'SlackBot Conversation ID'
+    required: true
+  email-recipients:
+    description: 'Email Recipients'
+    required: true
+outputs:
+  release: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'node12'
+  main: 'notify.js'

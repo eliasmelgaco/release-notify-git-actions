@@ -2,8 +2,9 @@
   "name": "release-notify-git-actions",
   "version": "1.0.0",
   "description": "GitHub Action that triggers e-mails with release notes when these are created",
-  "main": "index.js",
+  "main": "notify.js",
   "scripts": {
+    "lint": "eslint notify.js src/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/PayCertify/release-notify-git-actions/issues"
   },
-  "homepage": "https://github.com/PayCertify/release-notify-git-actions#readme"
+  "homepage": "https://github.com/PayCertify/release-notify-git-actions#readme",
+  "dependencies": {
+    "@actions/core": "1.2.6",
+    "@actions/github": "4.0.0",
+    "@slack/web-api": "6.0.0"
+  },
+  "devDependencies": {
+    "eslint": "7.18.0"
+  }
 }
