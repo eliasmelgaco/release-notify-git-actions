@@ -8,16 +8,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - run: npm i
-      - uses: ./
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Release Notify Git Actions
+        uses: PayCertify/release-notify-git-actions
         with:
-            repository: PayCertify/release-notify-git-actions
-      - uses: ./
-        with:
-            owner: eliasmelgaco
-            repo: release-notify-git-actions
-      - uses: ./
-        with:
-            owner: eliasmelgaco
-            repo: release-notify-git-actions
-            excludes: prerelease, draft
+          github-token: '7dd6a3cb737053d1f74c30082070a9509d357bdc'
+          slackbot-token: 'x'
+          slack-conversation-id: 'elias@paycertify.com'
+      
