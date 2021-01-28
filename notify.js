@@ -91,6 +91,8 @@ module.exports.run = async () => {
 
     message = await getSlackMessage(Octokit, owner, repo);
 
+    console.log(message, 'this is a test');
+
     GitHubCore.info('Message built');
   } catch (err) {
     GitHubCore.setFailed(prefixError(err, 'GitHub'));
