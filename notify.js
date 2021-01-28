@@ -75,6 +75,7 @@ const request = require('request');
 
 
 module.exports.run = async () => {
+  console.log('this is a test');
   // try {
   //   sgMail.setApiKey(process.env.SENDGRID_API_TOKEN);
   // } catch (err) {
@@ -91,7 +92,6 @@ module.exports.run = async () => {
 
     message = await getSlackMessage(Octokit, owner, repo);
 
-    console.log(message, 'this is a test');
 
     GitHubCore.info('Message built');
   } catch (err) {
