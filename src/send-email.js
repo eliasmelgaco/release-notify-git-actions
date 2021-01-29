@@ -37,14 +37,14 @@ module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
   // GitHubCore.info('3: Send Email');
   const html = converter.makeHtml(`${repoObject.description}${footer}`);
 
-  GitHubCore.info(`4: Send Email ${recipients} and ${recipients.split(/\r\n|\n|\r/)}`);
+  GitHubCore.info(`4: Send Email ${recipients} and ${recipients.split(',')}`);
   const msg = {
     to: ['subscribers@no-reply.com'],
     from: {
       name: `${repoObject.repo} Release Notifier`,
       email: 'elias@paycertify.com'
     },
-    bcc: recipients.split(/\r\n|\n|\r/),
+    bcc: recipients.split(','),
     subject: emailSubject,
     html
   };

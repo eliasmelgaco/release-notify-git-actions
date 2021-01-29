@@ -20,7 +20,5 @@ jobs:
           slackbot-token: x
           slack-conversation-id: elias@paycertify.com
           sendgrid-token: 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
-          email-recipients: >
-                          elias@paycertify.com
-                          denis.toledo@paycertify.com
+          email-recipients: elias@paycertify.com,denis.toledo@paycertify.com
       
