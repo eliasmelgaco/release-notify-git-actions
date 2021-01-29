@@ -14,7 +14,7 @@ const {
 // const sgMail = require('@sendgrid/mail');
 
 const latestPullRequest = require('./src/get-latest-pull-request');
-const sendEmail = require('./src/send-email-message');
+const sendEmail = require('./src/send-email');
 const getSlackMessage = require('./src/get-slack-message');
 const postMessage = require('./src/post-message');
 const prefixError = require('./src/prefix-vendor-error-message');

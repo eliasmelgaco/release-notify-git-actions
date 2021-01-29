@@ -18,12 +18,14 @@ const sendEmails = async (msg, GitHubCore) => {
 
 
 module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
+  GitHubCore.info('1: Send Email');
   try {
     sgMail.setApiKey(sendgridToken);
   } catch (err) {
     GitHubCore.setFailed(`Failed when try to set SendGrid API, error: ${err}`);
   }
 
+  GitHubCore.info('2: Send Email');
   const converter = new showdown.Converter();
 
   const emailSubject = `New ${repoObject.repo} release: ${repoObject.name} (${repoObject.tag_name})`;
@@ -32,8 +34,10 @@ module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
     [Visit the release page](${repoObject.url})
   `;
 
+  GitHubCore.info('3: Send Email');
   const html = converter.makeHtml(`${repoObject.description}${footer}`);
 
+  GitHubCore.info('4: Send Email');
   const msg = {
     to: ['subscribers@no-reply.com'],
     from: {
@@ -45,6 +49,7 @@ module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
     html
   };
 
+  GitHubCore.info('5: Send Email');
   return sendEmails(msg, GitHubCore);
 
   
