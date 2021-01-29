@@ -28,10 +28,15 @@ module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
   // GitHubCore.info('2: Send Email');
   const converter = new showdown.Converter();
 
-  const emailSubject = `New ${repoObject.repo} release: ${repoObject.name} (${repoObject.tag_name})`;
+  const emailSubject = `New ${repoObject.repo} release: ${repoObject.description} (${repoObject.name})`;
   const footer = `
-    ## Where to find the release?
-    [Visit the release page](${repoObject.url})
+![PC Logo][pc-logo]
+
+# ${emailSubject}
+## Where to find the release?
+[Visit the release page](${repoObject.url})
+
+[pc-logo](https://my.paycertify.com/assets/images/paycertify-757cdf1128914f062b5d30dca4ff8751.svg)
   `;
 
   // GitHubCore.info('3: Send Email');
@@ -39,7 +44,7 @@ module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
 
   GitHubCore.info(`4: Send Email ${recipients} and ${recipients.split(',')}`);
   const msg = {
-    to: ['subscribers@no-reply.com'],
+    to: ['subscribers@no-reply.com'], // change to engineering@paycertify.com
     from: {
       name: `${repoObject.repo} Release Notifier`,
       email: 'elias@paycertify.com'
