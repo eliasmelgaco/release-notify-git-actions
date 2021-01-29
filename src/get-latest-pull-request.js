@@ -1,5 +1,6 @@
 'use strict';
 
+const GitHubCore = require('@actions/core');
 module.exports = async (Octokit, owner, repo) => {
   const { data: releases } = await Octokit.repos.listReleases({ owner, repo });
 
@@ -19,10 +20,10 @@ module.exports = async (Octokit, owner, repo) => {
   //   properties += `,${val}`;
   // });
 
-  // GitHubCore.info(latestRelease.tag_name); // v0.0.29
-  // GitHubCore.info(latestRelease.name); // title 321321
-  // GitHubCore.info(latestRelease.body); // description 123 123
-  // GitHubCore.info(latestRelease.html_url); // https://github.com/PayCertify/release-notify-git-actions/releases/tag/v0.0.29
+  GitHubCore.info(latestRelease.tag_name); // v0.0.29
+  GitHubCore.info(latestRelease.name); // title 321321
+  GitHubCore.info(latestRelease.body); // description 123 123
+  GitHubCore.info(latestRelease.html_url); // https://github.com/PayCertify/release-notify-git-actions/releases/tag/v0.0.29
 
   return {
     url,

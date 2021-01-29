@@ -19,72 +19,7 @@ const getSlackMessage = require('./src/get-slack-message');
 const postMessage = require('./src/post-message');
 const prefixError = require('./src/prefix-vendor-error-message');
 
-// const showdown  = require('showdown');
-// const fs = require('fs');
-// const request = require('request');
-
-// const prepareMessage = (recipients) => {
-//   const converter = new showdown.Converter();
-//   const {
-//     repository: {
-//       repository: repoName
-//     },
-//     release: {
-//       tag_name: releaseVersion,
-//       name: releaseName,
-//       html_url: releaseURL,
-//       body: releaseBody
-//     }
-//   } = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
-
-//   // E-mail string templates
-//   const emailSubject = `New ${repoName} release: ${releaseName} (${releaseVersion})`;
-//   const footer = `
-//     ## Where to find the release?
-//     [Visit the release page](${releaseURL})
-//   `;
-
-//   const htmlBody = converter.makeHtml(`${releaseBody}${footer}`);
-
-//   return {
-//     to: ['subscribers@no-reply.com'],
-//     from: {
-//       name: `${repoName} Release Notifier`,
-//       email: 'no-reply@no-reply.com'
-//     },
-//     bcc: recipients,
-//     subject: emailSubject,
-//     html: htmlBody
-//   };
-// }
-
-// const sendEmails = async (msg) => {
-//   return sgMail
-//     .send(msg)
-//     .then(() => {
-//       console.log("Mail sent!")
-//     })
-//     .catch(error => {
-//       console.error(error.toString())
-
-//       // //Extract error msg
-//       // const { message, code, response } = error
-
-//       // //Extract response msg
-//       // const { headers, body } = response
-//     });
-// }
-
-
 async function run () {
-  // GitHubCore.info('Inside index.js function');
-
-  // try {
-  //   sgMail.setApiKey(process.env.sendgrid-token);
-  // } catch (err) {
-  //   GitHubCore.setFailed(`Failed when try to set SendGrid API, error: ${err}`);
-  // }
-
   let Octokit;
   let owner;
   let repo;
