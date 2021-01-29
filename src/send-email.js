@@ -45,8 +45,8 @@ module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
       email: 'eliasmelgaco@gmail.com' // change to engineering@paycertify.com
     },
     reply_to: {
-      name: `Paycertify's Release Notifier`, 
-      email: 'elias@paycertify.com' // change to engineering@paycertify.com
+      name: 'No Reply', 
+      email: 'do-not-reply@paycertify.com'
     },
     subject: emailSubject,
     html
