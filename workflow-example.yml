@@ -1,8 +1,7 @@
 name: Release
-on: [push]
-# on:
-#  release:
-#    types: [published]
+on:
+ release:
+   types: [published]
 
 jobs:
   build:
@@ -28,3 +27,4 @@ jobs:
           slack-conversation-id: elias@paycertify.com
           sendgrid-token: ${{ secrets.SENDGRID_RELEASE_NOTIFY_TOKEN }}
           email-recipients: elias@paycertify.com,denis.toledo@paycertify.com
+      
