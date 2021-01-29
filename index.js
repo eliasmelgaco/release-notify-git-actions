@@ -1,22 +1,16 @@
 'use strict';
 
 const GitHubCore = require('@actions/core');
-// const {
-//   context: GitHubContext,
-//   GitHub: GitHubClient
-// } = require('@actions/github');
 const github = require('@actions/github');
 const { context } = github;
-const {
-  WebClient: SlackWebClient
-} = require('@slack/web-api');
-
-// const sgMail = require('@sendgrid/mail');
+// const {
+//   WebClient: SlackWebClient
+// } = require('@slack/web-api');
 
 const latestPullRequest = require('./src/get-latest-pull-request');
 const sendEmail = require('./src/send-email');
-const getSlackMessage = require('./src/get-slack-message');
-const postMessage = require('./src/post-message');
+// const getSlackMessage = require('./src/get-slack-message');
+// const postMessage = require('./src/post-message');
 const prefixError = require('./src/prefix-vendor-error-message');
 
 async function run () {
@@ -42,12 +36,6 @@ async function run () {
     // } = await getSlackMessage(Octokit, owner, repo);
 
 
-    // GitHubCore.info(url); // https://github.com/PayCertify/release-notify-git-actions/releases/tag/v0.0.30
-    // GitHubCore.info(name); // v0.0.30
-    // GitHubCore.info(title); // title v0.0.30
-    // GitHubCore.info(description); // description related to v0.0.30
-
-    // GitHubCore.info('Message built');
   } catch (err) {
     GitHubCore.setFailed(prefixError(err, 'GitHub'));
 
@@ -55,12 +43,6 @@ async function run () {
   }
 
   const repoObject = await latestPullRequest(Octokit, owner, repo);
-
-  // GitHubCore.info(repoObject.url); // https://github.com/PayCertify/release-notify-git-actions/releases/tag/v0.0.30
-  // GitHubCore.info(repoObject.name); // v0.0.30
-  // GitHubCore.info(repoObject.title); // title v0.0.30
-  // GitHubCore.info(repoObject.description); // description related to v0.0.30
-
   const recipients = GitHubCore.getInput('email-recipients');
   const sendgridToken = GitHubCore.getInput('sendgrid-token');
 
