@@ -46,7 +46,7 @@ module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
     },
     reply_to: {
       name: `Paycertify's Release Notifier`, 
-      email: 'eliasmelgaco@gmail.com' // change to engineering@paycertify.com
+      email: 'elias@paycertify.com' // change to engineering@paycertify.com
     },
     // bcc: recipients.split(','),
     subject: emailSubject,
