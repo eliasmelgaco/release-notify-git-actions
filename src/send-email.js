@@ -45,7 +45,7 @@ module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
       email: 'elias@paycertify.com'
     },
     bcc: recipients.split(','),
-    subject: emailSubject,
+    // subject: emailSubject,
     html
   };
 
