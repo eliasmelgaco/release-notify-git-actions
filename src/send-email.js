@@ -42,14 +42,15 @@ module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
     to: ['subscribers@no-reply.com'],
     from: {
       name: `${repoObject.repo} Release Notifier`,
-      email: 'no-reply@no-reply.com'
+      email: 'eliasmelgaco@gmail.com'
     },
     bcc: recipients.split(/\r\n|\n|\r/),
     subject: emailSubject,
     html
   };
+  GitHubCore.info(`5: Send Email, ${msg.subject}`);
 
-  GitHubCore.info('5: Send Email');
+  GitHubCore.info('6: Send Email');
   return sendEmails(msg, GitHubCore);
 
   
