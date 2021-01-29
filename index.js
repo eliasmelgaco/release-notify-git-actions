@@ -54,7 +54,7 @@ async function run () {
     return;
   }
 
-  const repoObject = latestPullRequest(Octokit, owner, repo);
+  const repoObject = await latestPullRequest(Octokit, owner, repo);
 
   GitHubCore.info(repoObject.url); // https://github.com/PayCertify/release-notify-git-actions/releases/tag/v0.0.30
   GitHubCore.info(repoObject.name); // v0.0.30

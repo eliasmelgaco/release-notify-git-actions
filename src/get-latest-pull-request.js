@@ -15,12 +15,12 @@ module.exports = async (Octokit, owner, repo) => {
 
   // GitHubCore.info('inside get-lated-pull-request.js');
 
-  let properties = '';
-  Object.getOwnPropertyNames(releases[0]).forEach((val) => {
-    properties += `,${val}`;
-  });
+  // let properties = '';
+  // Object.getOwnPropertyNames(releases[0]).forEach((val) => {
+  //   properties += `,${val}`;
+  // });
 
-  GitHubCore.info(properties); // v0.0.29
+  // GitHubCore.info(properties); // v0.0.29
 
 
   // GitHubCore.info(latestRelease.tag_name); // v0.0.29
