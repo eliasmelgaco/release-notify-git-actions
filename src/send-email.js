@@ -39,7 +39,7 @@ module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
   const html = converter.makeHtml(emailBody);
 
   const msg = {
-    to: ['elias@paycertify.com'], // change to engineering@paycertify.com
+    to: ['subscribers@no-reply.com'], // change to engineering@paycertify.com
     from: {
       name: `Paycertify's Release Notifier`,
       email: 'elias@paycertify.com'
