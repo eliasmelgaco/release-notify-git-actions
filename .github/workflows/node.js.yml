@@ -14,13 +14,21 @@ jobs:
       - name: Install dependencies
         run: npm i
 
+      - name: Checkout Release Notify Git Actions GH Action
+        uses: actions/checkout@v2
+        with:
+          repository: PayCertify/release-notify-git-actions
+          token: ${{ secrets.ACTIONS_TOKEN }}
+          path: ./.github/actions/release-notify
+
+
       - name: Release Notify Git Actions
-        uses: ./
+        uses: ./.github/actions/release-notify
         id: releaseStep
         with:
           github-token: 7dd6a3cb737053d1f74c30082070a9509d357bdc
           slackbot-token: x
           slack-conversation-id: elias@paycertify.com
-          sendgrid-token: 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
+          sendgrid-token: ${{ secrets.SENDGRID_RELEASE_NOTIFY_TOKEN }}
           email-recipients: elias@paycertify.com,denis.toledo@paycertify.com
       
