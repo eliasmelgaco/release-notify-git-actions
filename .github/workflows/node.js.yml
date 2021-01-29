@@ -16,10 +16,10 @@ jobs:
         uses: ./
         id: releaseStep
         with:
-          github-token: '7dd6a3cb737053d1f74c30082070a9509d357bdc'
-          slackbot-token: 'x'
-          slack-conversation-id: 'elias@paycertify.com'
-          sendgrid-token: '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'
+          github-token: 7dd6a3cb737053d1f74c30082070a9509d357bdc
+          slackbot-token: x
+          slack-conversation-id: elias@paycertify.com
+          sendgrid-token: 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
           email-recipients: >
                           elias@paycertify.com
                           denis.toledo@paycertify.com

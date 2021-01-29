@@ -7,6 +7,9 @@ inputs:
   slackbot-token:
     description: 'SlackBot Token'
     required: true
+  sendgrid-token:
+    description: 'SendGrid Token'
+    required: true
   slack-conversation-id:
     description: 'SlackBot Conversation ID'
     required: true
