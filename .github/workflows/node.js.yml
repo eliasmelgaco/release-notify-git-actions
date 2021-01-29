@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   build:
-    name: Test
+    name: Release Notifier
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,7 +16,11 @@ jobs:
         uses: ./
         id: releaseStep
         with:
-          github-token: '7dd6a3cb737053d1f74c30082070a9509d357bdc'
-          slackbot-token: 'x'
-          slack-conversation-id: 'elias@paycertify.com'
+          github-token: 7dd6a3cb737053d1f74c30082070a9509d357bdc
+          slackbot-token: x
+          slack-conversation-id: elias@paycertify.com
+          sendgrid-token: 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
+          email-recipients: >
+                          elias@paycertify.com
+                          denis.toledo@paycertify.com
       

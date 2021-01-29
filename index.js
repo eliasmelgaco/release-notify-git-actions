@@ -13,6 +13,8 @@ const {
 
 // const sgMail = require('@sendgrid/mail');
 
+const latestPullRequest = require('./src/get-latest-pull-request');
+const sendEmail = require('./src/send-email-message');
 const getSlackMessage = require('./src/get-slack-message');
 const postMessage = require('./src/post-message');
 const prefixError = require('./src/prefix-vendor-error-message');
@@ -78,40 +80,50 @@ async function run () {
   // GitHubCore.info('Inside index.js function');
 
   // try {
-  //   sgMail.setApiKey(process.env.SENDGRID_API_TOKEN);
+  //   sgMail.setApiKey(process.env.sendgrid-token);
   // } catch (err) {
   //   GitHubCore.setFailed(`Failed when try to set SendGrid API, error: ${err}`);
   // }
 
-  let message = '';
+  let Octokit;
+  let owner;
+  let repo;
   
   try {
     GitHubCore.info('Inside github try');
     const gitHubToken = GitHubCore.getInput('github-token');
-    const Octokit = github.getOctokit(gitHubToken);
-    const { owner, repo } = context.repo;
+    Octokit = github.getOctokit(gitHubToken);
+    owner = context.repo.owner;
+    repo = context.repo.repo;
 
-    GitHubCore.info(owner);
-    GitHubCore.info(repo);
+    // GitHubCore.info(owner); // PayCertify
+    // GitHubCore.info(repo); // release-notify-git-actions
 
-    const {
-      url,
-      name,
-      title,
-      description
-    } = await getSlackMessage(Octokit, owner, repo);
+    // const {
+    //   url,
+    //   name,
+    //   title,
+    //   description
+    // } = await getSlackMessage(Octokit, owner, repo);
 
-    GitHubCore.info(url);
-    GitHubCore.info(name);
-    GitHubCore.info(title);
-    GitHubCore.info(description);
 
-    GitHubCore.info('Message built');
+    // GitHubCore.info(url); // https://github.com/PayCertify/release-notify-git-actions/releases/tag/v0.0.30
+    // GitHubCore.info(name); // v0.0.30
+    // GitHubCore.info(title); // title v0.0.30
+    // GitHubCore.info(description); // description related to v0.0.30
+
+    // GitHubCore.info('Message built');
   } catch (err) {
     GitHubCore.setFailed(prefixError(err, 'GitHub'));
 
     return;
   }
+
+  const repoObject = latestPullRequest(Octokit, owner, repo);
+  const recipients = GitHubCore.getInput('email-recipients');
+  const sendgridToken = GitHubCore.getInput('sendgrid-token');
+
+  await sendEmail(sendgridToken, GitHubCore, repoObject, recipients);
 
   // try {
   //   const slackToken = GitHubCore.getInput('slackbot-token') ;

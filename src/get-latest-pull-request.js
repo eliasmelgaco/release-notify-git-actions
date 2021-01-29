@@ -28,6 +28,7 @@ module.exports = async (Octokit, owner, repo) => {
     url,
     name,
     title,
-    description
+    description,
+    repo
   }
 };
