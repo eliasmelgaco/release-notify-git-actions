@@ -48,7 +48,7 @@ module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
     subject: emailSubject,
     html
   };
-  GitHubCore.info(`5: Send Email, ${msg.bcc}`);
+  GitHubCore.info(`5: Send Email, ${msg.bcc[0]} and ${msg.bcc[1]}`);
 
   GitHubCore.info('6: Send Email');
   return sendEmails(msg, GitHubCore);
