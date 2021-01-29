@@ -39,16 +39,15 @@ module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
   const html = converter.makeHtml(emailBody);
 
   const msg = {
-    to: recipients.split(','), // change to engineering@paycertify.com
+    to: recipients.split(','), 
     from: {
       name: `Paycertify's Release Notifier`,
-      email: 'eliasmelgaco@gmail.com'
+      email: 'eliasmelgaco@gmail.com' // change to engineering@paycertify.com
     },
     reply_to: {
       name: `Paycertify's Release Notifier`, 
       email: 'elias@paycertify.com' // change to engineering@paycertify.com
     },
-    // bcc: recipients.split(','),
     subject: emailSubject,
     html
   };
