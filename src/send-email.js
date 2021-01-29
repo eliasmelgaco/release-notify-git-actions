@@ -3,7 +3,7 @@
 const sgMail = require('@sendgrid/mail');
 const showdown  = require('showdown');
 const request = require('request');
-const prefixError = require('./src/prefix-vendor-error-message');
+const prefixError = require('./prefix-vendor-error-message');
 
 const sendEmails = async (msg, GitHubCore) => {
   return sgMail
