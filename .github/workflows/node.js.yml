@@ -26,7 +26,7 @@ jobs:
         uses: ./.github/actions/release-notify
         id: releaseStep
         with:
-          github-token: 7dd6a3cb737053d1f74c30082070a9509d357bdc
+          github-token: ${{ secrets.ACTIONS_TOKEN }}
           slackbot-token: x
           slack-conversation-id: elias@paycertify.com
           sendgrid-token: ${{ secrets.SENDGRID_RELEASE_NOTIFY_TOKEN }}
