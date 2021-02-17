@@ -25,7 +25,7 @@ module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
 
   const converter = new showdown.Converter();
 
-  const emailSubject = `New ${repoObject.repo} release: ${repoObject.description} (${repoObject.name})`;
+  const emailSubject = `New ${repoObject.repo} release: ${repoObject.title} (${repoObject.name})`;
   const emailBody = `
 ![PC Logo][pc-logo]
 
