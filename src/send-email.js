@@ -25,12 +25,13 @@ module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
 
   const converter = new showdown.Converter();
 
-  const emailSubject = `New ${repoObject.repo} release: ${repoObject.title} (${repoObject.name})`;
+  const emailSubject = `New ${repoObject.repo} release: ${repoObject.title}`;
   const emailBody = `
 ![PC Logo][pc-logo]
 
 # ${emailSubject}
 ## Where to find the release?
+# ${repoObject.description}
 [Visit the release page](${repoObject.url})
 
 [pc-logo]: https://my.paycertify.com/assets/images/paycertify-757cdf1128914f062b5d30dca4ff8751.svg
