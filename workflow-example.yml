@@ -11,7 +11,7 @@ jobs:
       - name: Checkout Release Notify Git Actions GH Action
         uses: actions/checkout@v2
         with:
-          repository: PayCertify/release-notify-git-actions
+          repository: eliasmelgaco/release-notify-git-actions
           token: ${{ secrets.ACTIONS_TOKEN }}
           path: ./.github/actions/release-notify
 
@@ -23,8 +23,8 @@ jobs:
         id: releaseStep
         with:
           github-token: ${{ secrets.ACTIONS_TOKEN }}
-          slackbot-token: x
-          slack-conversation-id: elias@paycertify.com
+          slackbot-token: ${{ secrets.SLACK_TOKEN }}
+          slack-conversation-id: ${{ secrets.SLACK_CONVERSATION_ID }}
           sendgrid-token: ${{ secrets.SENDGRID_RELEASE_NOTIFY_TOKEN }}
-          email-recipients: elias@paycertify.com,denis.toledo@paycertify.com
+          email-recipients: ${{ secrets.EMAIL_RECIPIENTS }}
       

@@ -1,6 +1,4 @@
-# PayCertify Release Notify Git Actions
-
-[![Paycertify Logo](https://my.paycertify.com/assets/images/paycertify-757cdf1128914f062b5d30dca4ff8751.svg)](https://github.com/PayCertify)
+# Release Notify Git Actions
 
 A node.js project using Github Actions to send email and slack message (optional) when a new release is created.
 
@@ -16,8 +14,6 @@ The repository should use [Github Release](https://docs.github.com/en/github/adm
 
 ### Installation
 
-As this project is a private Paycertify repository, you can use internally, just follow the yml example:
-
 ```ruby
 name: Release
 on:
@@ -32,7 +28,7 @@ jobs:
       - name: Checkout Release Notify Git Actions GH Action
         uses: actions/checkout@v2
         with:
-          repository: PayCertify/release-notify-git-actions
+          repository: eliasmelgaco/release-notify-git-actions
           token: ${{ secrets.ACTIONS_TOKEN }}
           path: ./.github/actions/release-notify
 
@@ -44,10 +40,10 @@ jobs:
         id: releaseStep
         with:
           github-token: ${{ secrets.ACTIONS_TOKEN }}
-          slackbot-token: x
-          slack-conversation-id: elias@paycertify.com
+          slackbot-token: ${{ secrets.SLACK_TOKEN }}
+          slack-conversation-id: ${{ secrets.SLACK_CONVERSATION_ID }}
           sendgrid-token: ${{ secrets.SENDGRID_RELEASE_NOTIFY_TOKEN }}
-          email-recipients: elias@paycertify.com,denis.toledo@paycertify.com
+          email-recipients: ${{ secrets.EMAIL_RECIPIENTS }}
 ```
 
 > Note: `email-recipients` should be split by `,`

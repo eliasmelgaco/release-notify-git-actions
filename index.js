@@ -25,7 +25,7 @@ async function run () {
     owner = context.repo.owner;
     repo = context.repo.repo;
 
-    // GitHubCore.info(owner); // PayCertify
+    // GitHubCore.info(owner); // Organization
     // GitHubCore.info(repo); // release-notify-git-actions
 
     // const {

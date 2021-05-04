@@ -1,5 +1,5 @@
 name: 'Notify Latest Release'
-description: 'Notify Latest Release | Paycertify'
+description: 'Notify Latest Release'
 inputs:
   github-token:
     description: 'GitHub Token'

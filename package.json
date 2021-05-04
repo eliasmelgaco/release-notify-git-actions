@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PayCertify/release-notify-git-actions.git"
+    "url": "git+https://github.com/eliasmelgaco/release-notify-git-actions.git"
   },
   "author": "eliasmelgaco@gmail.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PayCertify/release-notify-git-actions/issues"
+    "url": "https://github.com/eliasmelgaco/release-notify-git-actions/issues"
   },
-  "homepage": "https://github.com/PayCertify/release-notify-git-actions#readme",
+  "homepage": "https://github.com/eliasmelgaco/release-notify-git-actions#readme",
   "dependencies": {
     "@actions/core": "1.2.6",
     "@actions/github": "4.0.0",

@@ -34,7 +34,7 @@ module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
 # ${repoObject.description}
 [Visit the release page](${repoObject.url})
 
-[pc-logo]: https://my.paycertify.com/assets/images/paycertify-757cdf1128914f062b5d30dca4ff8751.svg
+{You can put message here}
   `;
 
   const html = converter.makeHtml(emailBody);
@@ -42,12 +42,12 @@ module.exports = async (sendgridToken, GitHubCore, repoObject, recipients) => {
   const msg = {
     to: recipients.split(','), 
     from: {
-      name: `Paycertify's Release Notifier`,
-      email: 'eliasmelgaco@gmail.com' // change to engineering@paycertify.com
+      name: `Release Notifier`,
+      email: 'email@company.com'
     },
     reply_to: {
       name: 'No Reply', 
-      email: 'do-not-reply@paycertify.com'
+      email: 'do-not-reply@company.com'
     },
     subject: emailSubject,
     html
